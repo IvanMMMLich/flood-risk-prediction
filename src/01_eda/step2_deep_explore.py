@@ -146,7 +146,7 @@ def analyze_numeric_features(train_df, numeric_features):
     - Связь с целевой переменной
     """
     print(f"\n{Fore.CYAN}{'='*80}")
-    print(f"{Fore.CYAN}🔢 АНАЛИЗ ЧИСЛОВЫХ ПРИЗНАКОВ")
+    print(f"{Fore.CYAN} АНАЛИЗ ЧИСЛОВЫХ ПРИЗНАКОВ")
     print(f"{Fore.CYAN}{'='*80}")
     
     # Создаем папку для числовых признаков
@@ -157,7 +157,7 @@ def analyze_numeric_features(train_df, numeric_features):
     numeric_stats = []
     
     for feature in numeric_features:
-        print(f"\n📊 Анализирую {feature}...")
+        print(f"\n Анализирую {feature}...")
         
         # Создаем папку для этого признака
         feature_dir = numeric_dir / feature
@@ -203,7 +203,7 @@ def analyze_numeric_features(train_df, numeric_features):
             suspicious_123 = (train_df[feature] == 123).sum()
             if suspicious_123 > 0:
                 stats['suspicious_123'] = suspicious_123
-                print(f"   {Fore.YELLOW}⚠️ Найдено {suspicious_123} значений = 123 (возможно, код для 'неизвестно')")
+                print(f"   {Fore.YELLOW} Найдено {suspicious_123} значений = 123 (возможно, код для 'неизвестно')")
         
         numeric_stats.append(stats)
         
@@ -313,7 +313,7 @@ def analyze_numeric_features(train_df, numeric_features):
             f.write(f"  Процент выбросов: {stats['outliers_pct']:.1f}%\n")
             
             if 'suspicious_123' in stats:
-                f.write(f"\n⚠️ ПОДОЗРИТЕЛЬНЫЕ ЗНАЧЕНИЯ:\n")
+                f.write(f"\n ПОДОЗРИТЕЛЬНЫЕ ЗНАЧЕНИЯ:\n")
                 f.write(f"  Значений = 123: {stats['suspicious_123']}\n")
                 f.write(f"  Возможно, это код для 'неизвестно'\n")
     
@@ -321,7 +321,7 @@ def analyze_numeric_features(train_df, numeric_features):
     stats_df = pd.DataFrame(numeric_stats)
     stats_df.to_csv(STEP2_DIR / 'numeric_features_statistics.csv', index=False)
     
-    print(f"\n{Fore.GREEN}✅ Анализ числовых признаков завершен!")
+    print(f"\n{Fore.GREEN} Анализ числовых признаков завершен!")
     print(f"   Результаты сохранены в: {numeric_dir}")
     
     return stats_df
@@ -350,7 +350,7 @@ def analyze_categorical_features(train_df, categorical_features):
     categorical_stats = []
     
     for feature in categorical_features:
-        print(f"\n📊 Анализирую {feature}...")
+        print(f"\n Анализирую {feature}...")
         
         # Создаем папку для признака
         feature_dir = categorical_dir / feature
@@ -473,14 +473,14 @@ def analyze_categorical_features(train_df, categorical_features):
             best_category = approval_by_category['approval_rate'].idxmax()
             worst_category = approval_by_category['approval_rate'].idxmin()
             
-            f.write(f"\n📈 Лучший approval rate: {best_category} ({approval_by_category.loc[best_category, 'approval_rate']:.1f}%)\n")
-            f.write(f"📉 Худший approval rate: {worst_category} ({approval_by_category.loc[worst_category, 'approval_rate']:.1f}%)\n")
+            f.write(f"\n Лучший approval rate: {best_category} ({approval_by_category.loc[best_category, 'approval_rate']:.1f}%)\n")
+            f.write(f" Худший approval rate: {worst_category} ({approval_by_category.loc[worst_category, 'approval_rate']:.1f}%)\n")
     
     # Сохраняем сводную таблицу
     cat_stats_df = pd.DataFrame(categorical_stats)
     cat_stats_df.to_csv(STEP2_DIR / 'categorical_features_statistics.csv', index=False)
-    
-    print(f"\n{Fore.GREEN}✅ Анализ категориальных признаков завершен!")
+
+    print(f"\n{Fore.GREEN} Анализ категориальных признаков завершен!")
     print(f"   Результаты сохранены в: {categorical_dir}")
     
     return cat_stats_df
@@ -514,7 +514,7 @@ def analyze_feature_relationships(train_df, features_dict):
     print("-"*50)
     for feature, corr in target_corr.items():
         if abs(corr) > 0.1:
-            strength = "🔥 СИЛЬНАЯ" if abs(corr) > 0.3 else "⚡ СРЕДНЯЯ" if abs(corr) > 0.2 else "💨 СЛАБАЯ"
+            strength = " СИЛЬНАЯ" if abs(corr) > 0.3 else "⚡ СРЕДНЯЯ" if abs(corr) > 0.2 else "💨 СЛАБАЯ"
             print(f"  {feature:30}: {corr:+.4f} {strength}")
     
     # Визуализация корреляционной матрицы
@@ -553,7 +553,7 @@ def analyze_feature_relationships(train_df, features_dict):
             print(f"  {pair['feature1']} ↔ {pair['feature2']}: {pair['correlation']:.3f}")
         print(f"  → Возможна мультиколлинеарность, рассмотрите удаление одного из признаков")
     else:
-        print(f"\n{Fore.GREEN}✅ Высоких корреляций между признаками не найдено")
+        print(f"\n{Fore.GREEN} Высоких корреляций между признаками не найдено")
     
     # Сохраняем результаты
     target_corr.to_csv(STEP2_DIR / 'correlations_with_target.csv')
@@ -571,7 +571,7 @@ def create_summary_report(numeric_stats_df, categorical_stats_df, target_corr):
     Собирает все ключевые находки в один файл.
     """
     print(f"\n{Fore.CYAN}{'='*80}")
-    print(f"{Fore.CYAN}📋 СОЗДАНИЕ ИТОГОВОГО ОТЧЕТА")
+    print(f"{Fore.CYAN} СОЗДАНИЕ ИТОГОВОГО ОТЧЕТА")
     print(f"{Fore.CYAN}{'='*80}")
     
     with open(STEP2_DIR / 'SUMMARY_REPORT.txt', 'w') as f:
@@ -631,7 +631,7 @@ def create_summary_report(numeric_stats_df, categorical_stats_df, target_corr):
         f.write("   • Рассмотреть создание новых признаков (ratios, interactions)\n")
         f.write("   • Использовать class_weight='balanced' из-за дисбаланса (14% approval)\n")
     
-    print(f"{Fore.GREEN}✅ Итоговый отчет создан: {STEP2_DIR / 'SUMMARY_REPORT.txt'}")
+    print(f"{Fore.GREEN} Итоговый отчет создан: {STEP2_DIR / 'SUMMARY_REPORT.txt'}")
 
 # ==============================================================================
 # ГЛАВНАЯ ФУНКЦИЯ
@@ -642,7 +642,7 @@ def main():
     Главная функция, которая запускает весь анализ.
     """
     print(f"{Fore.MAGENTA}{'='*80}")
-    print(f"{Fore.MAGENTA}{' '*25}💳 LOAN APPROVAL PREDICTION")
+    print(f"{Fore.MAGENTA}{' '*25} LOAN APPROVAL PREDICTION")
     print(f"{Fore.MAGENTA}{' '*22}Шаг 2: Детальный анализ")
     print(f"{Fore.MAGENTA}{'='*80}")
     
@@ -665,13 +665,13 @@ def main():
     create_summary_report(numeric_stats_df, categorical_stats_df, target_corr)
     
     print(f"\n{Fore.MAGENTA}{'='*80}")
-    print(f"{Fore.MAGENTA}{' '*30}✅ ШАГ 2 ЗАВЕРШЕН!")
+    print(f"{Fore.MAGENTA}{' '*30} ШАГ 2 ЗАВЕРШЕН!")
     print(f"{Fore.MAGENTA}{'='*80}")
     
-    print(f"\n{Fore.YELLOW}📌 Результаты сохранены в:")
+    print(f"\n{Fore.YELLOW} Результаты сохранены в:")
     print(f"   {STEP2_DIR}")
     
-    print(f"\n{Fore.YELLOW}📌 Следующий шаг:")
+    print(f"\n{Fore.YELLOW} Следующий шаг:")
     print(f"   Запустите: {Fore.CYAN}python src/01_eda/step3_check_quality.py")
     print(f"   Для проверки качества данных и обработки проблем")
     

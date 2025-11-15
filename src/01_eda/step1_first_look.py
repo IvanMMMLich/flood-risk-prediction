@@ -37,7 +37,7 @@ RESULTS = ROOT_DIR / 'results'
 def load_data():
     """Загрузка данных о кредитах."""
     print(f"\n{Fore.CYAN}{'='*80}")
-    print(f"{Fore.CYAN}📂 ЗАГРУЗКА ДАННЫХ О КРЕДИТАХ")
+    print(f"{Fore.CYAN} ЗАГРУЗКА ДАННЫХ О КРЕДИТАХ")
     print(f"{Fore.CYAN}{'='*80}")
     
     train_path = DATA_RAW / 'train.csv'
@@ -47,15 +47,15 @@ def load_data():
     train_df = pd.read_csv(train_path)
     test_df = pd.read_csv(test_path)
     
-    print(f"{Fore.GREEN}✅ Train загружен: {train_df.shape}")
-    print(f"{Fore.GREEN}✅ Test загружен: {test_df.shape}")
+    print(f"{Fore.GREEN} Train загружен: {train_df.shape}")
+    print(f"{Fore.GREEN} Test загружен: {test_df.shape}")
     
     return train_df, test_df
 
 def analyze_structure(train_df, test_df):
     """Анализ структуры данных о кредитах."""
     print(f"\n{Fore.CYAN}{'='*80}")
-    print(f"{Fore.CYAN}🏦 СТРУКТУРА ДАННЫХ О КРЕДИТАХ")
+    print(f"{Fore.CYAN} СТРУКТУРА ДАННЫХ О КРЕДИТАХ")
     print(f"{Fore.CYAN}{'='*80}")
     
     # Классификация столбцов
@@ -77,14 +77,14 @@ def analyze_structure(train_df, test_df):
             unique = train_df[col].nunique()
             print(f"   • {col:30} | Тип: {dtype} | Уникальных: {unique}")
     
-    print(f"\n📊 Кредитная история:")
+    print(f"\n Кредитная история:")
     for col in credit_history:
         if col in train_df.columns:
             dtype = train_df[col].dtype
             unique = train_df[col].nunique()
             print(f"   • {col:30} | Тип: {dtype} | Уникальных: {unique}")
     
-    print(f"\n🎯 Целевая переменная:")
+    print(f"\n Целевая переменная:")
     print(f"   • loan_status (0=отказ, 1=одобрение)")
 
 def analyze_target(train_df):
@@ -104,16 +104,16 @@ def analyze_target(train_df):
     print(f"\n💡 Общий процент одобрения: {approval_rate:.1f}%")
     
     if approval_rate < 30:
-        print(f"   {Fore.RED}⚠️ Очень низкий процент одобрения - сильный дисбаланс!")
+        print(f"   {Fore.RED} Очень низкий процент одобрения - сильный дисбаланс!")
     elif approval_rate < 40:
-        print(f"   {Fore.YELLOW}⚠️ Низкий процент одобрения - есть дисбаланс")
+        print(f"   {Fore.YELLOW} Низкий процент одобрения - есть дисбаланс")
     else:
-        print(f"   {Fore.GREEN}✅ Умеренный процент одобрения")
+        print(f"   {Fore.GREEN} Умеренный процент одобрения")
 
 def analyze_features(train_df):
     """Первичный анализ признаков."""
     print(f"\n{Fore.CYAN}{'='*80}")
-    print(f"{Fore.CYAN}📊 БЫСТРЫЙ АНАЛИЗ ПРИЗНАКОВ")
+    print(f"{Fore.CYAN} БЫСТРЫЙ АНАЛИЗ ПРИЗНАКОВ")
     print(f"{Fore.CYAN}{'='*80}")
     
     # Числовые признаки
@@ -122,7 +122,7 @@ def analyze_features(train_df):
     if 'loan_status' in numeric_cols:
         numeric_cols.remove('loan_status')
     
-    print(f"\n📈 Числовые признаки:")
+    print(f"\n Числовые признаки:")
     for col in numeric_cols:
         mean_val = train_df[col].mean()
         median_val = train_df[col].median()
@@ -140,7 +140,7 @@ def analyze_features(train_df):
     categorical_cols = train_df.select_dtypes(include=['object']).columns.tolist()
     
     if categorical_cols:
-        print(f"\n📝 Категориальные признаки:")
+        print(f"\n Категориальные признаки:")
         for col in categorical_cols:
             unique_values = train_df[col].nunique()
             top_value = train_df[col].value_counts().index[0]
@@ -173,7 +173,7 @@ def main():
     analyze_features(train_df)
     
     print(f"\n{Fore.MAGENTA}{'='*80}")
-    print(f"{Fore.MAGENTA}{' '*30}✅ ШАГ 1 ЗАВЕРШЕН!")
+    print(f"{Fore.MAGENTA}{' '*30} ШАГ 1 ЗАВЕРШЕН!")
     print(f"{Fore.MAGENTA}{'='*80}")
     
     return train_df, test_df
