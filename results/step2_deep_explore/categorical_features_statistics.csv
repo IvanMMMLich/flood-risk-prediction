@@ -1,5 +1,0 @@
-feature,unique_values,missing,missing_pct,most_common,most_common_count,most_common_pct,least_common,least_common_count,least_common_pct
-person_home_ownership,4,0,0.0,RENT,30594,52.16813027538579,OTHER,89,0.15176059340097195
-loan_intent,6,0,0.0,EDUCATION,12271,20.924204962059854,HOMEIMPROVEMENT,6280,10.708500298405662
-loan_grade,7,0,0.0,A,20984,35.781396538494334,G,33,0.056270781822832294
-cb_person_default_on_file,2,0,0.0,N,49943,85.1615653508398,Y,8702,14.8384346491602

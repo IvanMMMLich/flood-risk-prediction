@@ -1,0 +1,14 @@
+BASELINE MODEL v2 - After Feature Engineering
+==================================================
+Logistic Regression ROC-AUC: 0.9157
+Random Forest ROC-AUC: 0.9316
+Improvement from v0: +0.0576
+
+Total features: 35
+
+New features created:
+- high_risk_score
+- is_subprime_client
+- dti_critical
+- bad_grade_high_rate
+- debt_consolidation_risk

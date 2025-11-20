@@ -1,0 +1,12 @@
+TOP FEATURES FOR MODEL:
+==============================
+1. person_income
+2. loan_grade
+3. loan_int_rate
+4. person_home_ownership
+5. person_income_log
+6. loan_percent_income
+7. loan_amnt
+8. loan_intent
+9. person_age
+10. cb_person_default_on_file

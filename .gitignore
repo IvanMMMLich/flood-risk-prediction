@@ -4,39 +4,31 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 venv/
-.venv/
-*.egg-info/
-.pytest_cache/
+env/
+ENV/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb_checkpoints
-
-# Data files (слишком большие для Git)
+# Data (слишком большие для git)
 data/raw/*.csv
-data/processed/*.csv
-data/processed/*.pkl
-data/submissions/*.csv
-!data/*/.gitkeep
+!data/raw/sample_submission.csv
 
-# Models
-models/*.pkl
-models/*.joblib
-models/*.h5
-!models/.gitkeep
+# Models (большие файлы)
+*.pkl
+*.joblib
+*.h5
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
+# System files
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
+*.log
+*.swp
 
-# Environments
-.env
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Temporary
+tmp/
+temp/

@@ -1,6 +1,6 @@
 BASELINE MODEL METRICS
 ==================================================
-Date: 2025-11-15 18:07:22.552600
+Date: 2025-11-19 17:29:57.052416
 Model: LogisticRegression
 Features: 11
 Train size: 46916

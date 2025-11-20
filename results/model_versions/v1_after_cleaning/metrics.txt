@@ -1,0 +1,9 @@
+BASELINE MODEL v1 - After Cleaning
+==================================================
+ROC-AUC: 0.8730
+Improvement from v0: -0.0010
+
+Changes applied:
+- Replaced 123 anomalies with median
+- Log transformation of person_income
+- No outliers removed (kept for subprime logic)

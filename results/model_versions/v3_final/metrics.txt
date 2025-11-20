@@ -1,0 +1,18 @@
+FINAL MODEL METRICS
+==================================================
+Model: RandomForestClassifier
+Cross-validation ROC-AUC: 0.9361
+Number of features: 36
+Training date: 2025-11-21 03:42:17.204959
+
+Top 10 features:
+  loan_int_rate: 0.138
+  high_risk_score: 0.124
+  income_loan_ratio: 0.098
+  loan_grade_D: 0.096
+  loan_percent_income: 0.094
+  person_income_log: 0.068
+  dti_high: 0.049
+  person_home_ownership_RENT: 0.031
+  loan_grade_A: 0.028
+  loan_amnt: 0.022
