@@ -1,15 +1,18 @@
-# Data Processing
+# Core Data Processing
 pandas==2.3.3
 numpy==2.3.5
-
-# Visualization
-matplotlib==3.10.2
-seaborn==0.13.2
+scipy==1.16.3
 
 # Machine Learning
 scikit-learn==1.6.1
 xgboost==3.1.2
 
+# Visualization
+matplotlib==3.10.2
+seaborn==0.13.2
+
 # Utilities
-jupyter==1.1.1
-ipython==8.31.0
+joblib==1.4.2
+threadpoolctl==3.6.0
+python-dateutil==2.9.0
+pytz==2025.2
